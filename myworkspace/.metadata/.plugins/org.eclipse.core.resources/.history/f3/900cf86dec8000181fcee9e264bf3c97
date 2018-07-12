@@ -1,0 +1,21 @@
+package iot.mi.cloud;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class Test {
+
+
+	    @RequestMapping("/")
+	    public void welcomeHandler() {
+	    }
+
+	    @RequestMapping("/vets")
+	    public ModelMap vetsHandler() {
+	        return new ModelMap(this.clinic.getVets());
+	    }
+
+}
+

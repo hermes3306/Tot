@@ -1,0 +1,65 @@
+package j.p.Tot;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class HomeController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "home";
+	}
+	
+	static Tot tot;
+	static {
+		tot = new Tot();
+		List<Account> accounts = new ArrayList<Account>();
+		accounts.add(new Account(1,"kw",12000000,"180712"));
+		accounts.add(new Account(2,"wr",1000000,"180712"));
+		accounts.add(new Account(3,"wr",1000000,"180712"));
+		accounts.add(new Account(4,"ke",2000000,"180712"));
+		accounts.add(new Account(5,"wo",12000000,"180712"));
+		tot.setAccounts(accounts);
+	}
+	
+	@RequestMapping(value = "/show.go", method = RequestMethod.GET)
+	public ModelAndView show() {
+		logger.info("/show.go");
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("show");
+			mav.addObject("tot", tot);
+			return mav;
+	}
+	
+	
+	
+}
