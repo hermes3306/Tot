@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="mb"/>
 <aop-project name="Tot"/>
 <aop-project name="iot.mi.cloud"/>
 <aop-project name="myb"/>
