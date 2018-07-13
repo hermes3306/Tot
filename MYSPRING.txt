@@ -1,0 +1,164 @@
+pom.xml 
+
+
+<!-- spring jdbc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>4.2.3.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+</dependency>
+
+
+root-context.xml
+1) namespace: beans,context,jdbc
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+<property name="url" value="jdbc:mysql://127.0.0.1:3306/jhpark?useSSL=false&amp;serverTimezone=UTC"></property>
+<property name="username" value="root"></property>
+<property name="password" value="re91na00"></property>
+</bean>
+
+<bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dataSource" />
+</bean>
+
+
+JdbcTemplate
+
+Constant.java
+public class Constant {
+	// static JdbcTemplate shared object
+	public static JdbcTemplate template;
+}
+
+AccountDao.java
+
+import java.util.ArrayList;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class AccountDao {
+	JdbcTemplate template = null;
+	public AccountDao() {
+		template = Constant.template;
+	}
+	
+	public ArrayList<Account> all() {
+		String query = "select id, accnt, money, yymmdd from Tot";
+		ArrayList<Account> accounts = 
+				(ArrayList<Account>) template.query(query, new BeanPropertyRowMapper<Account>(Account.class));
+		return accounts;
+	}
+
+}
+
+AccountController.java
+
+package j.h.fman;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class AccountController {
+	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
+	 public JdbcTemplate template;
+	 @Autowired
+	 public void setTemplate(JdbcTemplate template) {
+		 this.template = template;
+		 Constant.template = this.template;
+	 }
+
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/all.me", method = RequestMethod.GET)
+	public String all(Locale locale, Model model) {
+		logger.info("AccountController /all.me ");
+		AccountDao ado = new AccountDao();
+		ArrayList<Account> accounts = ado.all();
+		model.addAttribute("accounts", accounts);
+		return "all";
+	}
+	
+
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/all2.me", method = RequestMethod.GET)
+	public ModelAndView all2() {
+		logger.info("AccountController /all2.me ");
+		AccountDao ado = new AccountDao();
+		ArrayList<Account> accounts = ado.all();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("all");
+		mav.addObject("accounts", accounts);
+		return mav;
+	}
+	
+
+}
+
+
+all.jsp
+
+b uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>all.jsp</title>
+</head>
+<body>
+<h2>all</h2>
+
+<table width="50%" border="1">
+	<tr align="center">
+		<th>id</th>
+		<th>accnt</th>
+		<th>money</th>
+		<th>yymmdd</th>
+	</tr>
+
+<c:forEach var="c" items="${accounts}" varStatus="status">
+	<tr align="center">
+		<td>${c.id}</td>
+		<td>${c.accnt}</td>
+		<td>${c.money}</td>
+		<td>${c.yymmdd}</td>
+	</tr>
+</c:forEach>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
