@@ -8,6 +8,6 @@ public class main {
 		FooService fooService=new FooService();
 		fooService.doSomeBusinessStuff(1);
 
-	}
+	} 
 
 }

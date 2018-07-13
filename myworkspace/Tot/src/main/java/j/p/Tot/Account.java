@@ -1,6 +1,10 @@
 package j.p.Tot;
 
 public class Account {
+	
+	public Account() {
+		super();
+	}
 	public Account(int id, String accnt, int money, String yymmdd) {
 		super();
 		this.id = id;

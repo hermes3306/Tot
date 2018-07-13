@@ -16,7 +16,7 @@ public class FooService {
 		return this.userMapper.getUser(id);
 	}
 	
-
+  
 	
 	
 }

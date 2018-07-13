@@ -51,15 +51,16 @@ public class HomeController {
 		tot.setAccounts(accounts);
 	}
 	
-	@RequestMapping(value = "/show.go", method = RequestMethod.GET)
-	public ModelAndView show() {
-		logger.info("/show.go");
+	@RequestMapping(value = "/show_old.go", method = RequestMethod.GET)
+	public ModelAndView show_old() {
+		logger.info("/show_old.go");
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("show");
+			mav.setViewName("show_old");
 			mav.addObject("tot", tot);
+			BDao b = new BDao();
+			List<Account> accounts = b.list();
+			mav.addObject("accounts", accounts);
 			return mav;
 	}
-	
-	
 	
 }
