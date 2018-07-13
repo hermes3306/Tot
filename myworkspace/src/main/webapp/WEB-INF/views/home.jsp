@@ -5,6 +5,11 @@
 	<title>Home</title>
 </head>
 <body>
+
+<div>
+    <jsp:include page="/menu.jsp" flush="false"/>
+</div>
+
 <h1>
 	Hello world!  
 </h1>

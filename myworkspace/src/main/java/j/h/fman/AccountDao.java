@@ -17,5 +17,12 @@ public class AccountDao {
 				(ArrayList<Account>) template.query(query, new BeanPropertyRowMapper<Account>(Account.class));
 		return accounts;
 	}
+	
+	public ArrayList<Stat> stat() {
+		String query = "select yymmdd, sum(money) as amount from Tot group by yymmdd";
+		ArrayList<Stat> stats =
+				(ArrayList<Stat>) template.query(query, new BeanPropertyRowMapper<Stat>(Stat.class));
+		return stats; 
+	}
 
 }

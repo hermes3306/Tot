@@ -2,30 +2,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>all.jsp</title>
+<title>stat.jsp</title>
 </head>
 <body>
 
 <div>
     <jsp:include page="/menu.jsp" flush="false"/>
 </div>
- 
-<h2>all</h2>
+
+<h2>stat</h2>
 
 <table width="50%" border="1">
 	<tr align="center">
-		<th>id</th>
-		<th>accnt</th>
-		<th>money</th>
 		<th>yymmdd</th>
+		<th>amount</th>
 	</tr>
 
-<c:forEach var="c" items="${accounts}" varStatus="status">
+<c:forEach var="c" items="${stats}" varStatus="status">
 	<tr align="center">
-		<td>${c.id}</td>
-		<td>${c.accnt}</td>
-		<td>${c.money}</td>
 		<td>${c.yymmdd}</td>
+		<td>${c.amount}</td>
 	</tr>
 </c:forEach>
 </table>

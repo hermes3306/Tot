@@ -53,5 +53,18 @@ public class AccountController {
 		return mav;
 	}
 	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/stat.me", method = RequestMethod.GET)
+	public ModelAndView stat() {
+		logger.info("AccountController /all2.me ");
+		AccountDao ado = new AccountDao();
+		ArrayList<Stat> stats = ado.stat();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("stat");
+		mav.addObject("stats", stats);
+		return mav;
+	}
 
 }
