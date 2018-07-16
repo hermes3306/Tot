@@ -56,7 +56,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/rtest/index.do">Startmin</a>
+                <a class="navbar-brand" href="index.do">Startmin</a>
             </div>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -67,14 +67,14 @@
             </button>
 
             <ul class="nav navbar-nav navbar-left navbar-top-links">
-                <li><a href="/rtest/index.do"><i class="fa fa-home fa-fw"></i> Website</a></li>
+                <li><a href="index.do"><i class="fa fa-home fa-fw"></i> Website</a></li>
             </ul>
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="/rtest/index.do" class="active"><i
+                        <li><a href="index.do" class="active"><i
                                 class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 
                     </ul>
