@@ -96,7 +96,7 @@
 	
 
 	
-	<select id="selectTimeInterval"  resultType="org.shin.demo.rtest.dto.GraphLimit">
+	<select id="selectTimeInterval"  resultType="a.b.c.GraphLimit">
 		<![CDATA[
                SELECT  to_char(sysdate-(1/24/60*2),'HH24:MI:SS') minDate 
                     ,to_char(sysdate,'HH24:MI:SS') maxDate

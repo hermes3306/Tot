@@ -20,6 +20,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/home/jhpark/Tot/myworkspace/iotview"/>
 			<item value="/home/jhpark/Tot/myworkspace/Raspberry"/>
 		</list>
 		<list key="projectNameTemplate">

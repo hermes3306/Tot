@@ -24,12 +24,12 @@ public class RealTimeList {
 	private RealTimeService rtService;
 	
 	
-	@RequestMapping(value="/rtest/index.do")
+	@RequestMapping(value="/index.do")
     public ModelAndView openSampleBoardList(Map<String,Object> commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("/realtime/Dashboard");
+		ModelAndView mv = new ModelAndView("/Dashboard");
     	return mv;
     }
-	@RequestMapping(value= "/rtest/getLastdata.do")
+	@RequestMapping(value= "/getLastdata.do")
 	public void realLastAjax(HttpServletRequest request,  
 	        HttpServletResponse response,Map<String,Object> commandMap) 
 	        		throws Exception  {
@@ -79,7 +79,7 @@ public class RealTimeList {
 	    }
 	}
 	
-	@RequestMapping(value= "/rtest/getrealdata.do", method=RequestMethod.POST)
+	@RequestMapping(value= "/getrealdata.do", method=RequestMethod.POST)
 	public ModelAndView AjaxView( Map<String,Object> commandMap) throws Exception{
 	    ModelAndView mav= new ModelAndView();
     	List<Map<String,Object>> list = rtService.selectGraphList(commandMap);
@@ -102,7 +102,7 @@ public class RealTimeList {
 	}	
 
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/rtest/getrealdata1.do")
+	@RequestMapping(value="/getrealdata1.do")
 	public @ResponseBody 
 	Object[] getJsonByMap(Map<String,Object> commandMap) throws Exception
 	{
@@ -124,7 +124,7 @@ public class RealTimeList {
     	
 	}
 	//Controller
-	@RequestMapping(value= "/rtest/getrealdata2.do")
+	@RequestMapping(value= "/getrealdata2.do")
 	public void AjaxView(  
 	        HttpServletResponse response,Map<String,Object> commandMap) 
 	        		throws Exception  {
@@ -155,7 +155,7 @@ public class RealTimeList {
 	    }   
 	}
 	//Controller
-	@RequestMapping(value= "/rtest/getrealMultidata.do")
+	@RequestMapping(value= "/getrealMultidata.do")
 	public void realDataView(HttpServletRequest request, 
 	        HttpServletResponse response,Map<String,Object> commandMap) 
 	        		throws Exception  {
@@ -187,7 +187,7 @@ public class RealTimeList {
 	    }   
 	}
 	//Controller
-	@RequestMapping(value= "/rtest/getGraphLimit.do")
+	@RequestMapping(value= "/getGraphLimit.do")
 	public void getGraphLimit(  
 	        HttpServletResponse response,Map<String,Object> commandMap) 
 	        		throws Exception  {
