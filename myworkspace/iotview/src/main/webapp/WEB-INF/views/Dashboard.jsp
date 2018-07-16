@@ -61,7 +61,7 @@
 	function getChartData() {
 
 		$.ajax({
-			url : "/rtest/getLastdata.do",
+			url : "getLastdata.do",
 			type : "get",
 			data : {
 				"id" : $("#id").val(),
@@ -105,7 +105,7 @@
 		var minDate;
 		var maxDate;
 		$.ajax({
-			url : "/rtest/getGraphLimit.do",
+			url : "getGraphLimit.do",
 			type : "get",
 			data : {
 				"id" : $("#id").val()
@@ -122,7 +122,7 @@
 		});
 				
 		$.ajax({
-			url : '/rtest/getrealMultidata.do',
+			url : 'getrealMultidata.do',
 			type : 'get',
 			data : {
 				"id" : $("#id").val(),
@@ -247,7 +247,7 @@
 
 						</div>
 					</div>
-					<a href="/rtest/index.do">
+					<a href="index.do">
 						<div class="panel-footer">
 							<span class="pull-left">View Details</span> <span
 								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
