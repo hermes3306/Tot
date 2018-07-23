@@ -63,4 +63,26 @@ public class HomeController {
 			return mav;
 	}
 	
+	@RequestMapping(value = "/show.go", method = RequestMethod.GET)
+	public ModelAndView show() {
+		logger.info("/show.go");
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("show");
+			BDao b = new BDao();
+			List<Account> accounts = b.list();
+			mav.addObject("accounts", accounts);
+			return mav;
+	}
+	
+	@RequestMapping(value = "/sum.go", method = RequestMethod.GET)
+	public ModelAndView sum() {
+		logger.info("/sum.go");
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("sum");
+			SumDao s = new SumDao();
+			List<Sum> sums = s.list();
+			mav.addObject("sums", sums);
+			return mav;
+	}
+	
 }

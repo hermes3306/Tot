@@ -12,10 +12,15 @@ public class BDao {
 	}
 	
 	public ArrayList<Account> list() {
-		
-		String query = "select id, accnt, money, yymmdd from Tot order by yymmdd";
+
+		String query = "select id, accnt, money, yymmdd from Tot order by yymmdd asc, id asc";
 		return (ArrayList<Account>) template.query(query, new BeanPropertyRowMapper<Account>(Account.class));
-		
+	}
+
+	public ArrayList<Account> Sum() {
+
+		String query = "select yymmdd, sum(money) money from Tot order by yymmdd asc";
+		return (ArrayList<Account>) template.query(query, new BeanPropertyRowMapper<Account>(Account.class));
 	}
 
 }
